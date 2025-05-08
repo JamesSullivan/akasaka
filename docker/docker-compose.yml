@@ -1,0 +1,35 @@
+# Use version 3.8 of the Docker Compose file format
+
+# Define the services (containers) for your application
+services:
+  # Define a service named 'db' for the PostgreSQL database
+  db:
+    # Use the official PostgreSQL image from Docker Hub
+    image: postgres:latest
+    # Map port 5432 on the host machine to port 5432 on the container
+    # This allows you to connect to the database from your local machine
+    ports:
+      - "5432:5432"
+    # Define environment variables required by the PostgreSQL image
+    environment:
+      # Set the PostgreSQL user
+      POSTGRES_USER: puser
+      # Set the PostgreSQL password
+      POSTGRES_PASSWORD: sullija564
+      # Set the default database name (optional, init.sql can create it)
+      # POSTGRES_DB: mydatabase # You can uncomment this if you prefer Docker to create the initial DB
+
+    # Define volumes for data persistence
+    volumes:
+      # Mount a named volume 'pgdata' to the default PostgreSQL data directory inside the container
+      # This ensures your database data persists even if the container is stopped or removed
+      - pgdata:/var/lib/postgresql/data
+      # Mount the local 'init.sql' file into the container's initialization directory
+      # The PostgreSQL image will execute scripts in this directory on first startup
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+# Define named volumes to be used by the services
+volumes:
+  # Define the 'pgdata' volume for persistent storage
+  pgdata:
+
