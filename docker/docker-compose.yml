@@ -15,7 +15,7 @@ services:
       # Set the PostgreSQL user
       POSTGRES_USER: puser
       # Set the PostgreSQL password
-      POSTGRES_PASSWORD: sullija564
+      POSTGRES_PASSWORD: ${AKASAKA_DB_PW}
       # Set the default database name (optional, init.sql can create it)
       # POSTGRES_DB: mydatabase # You can uncomment this if you prefer Docker to create the initial DB
 

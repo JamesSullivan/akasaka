@@ -5,24 +5,13 @@
 -- The name 'mydatabase' should match what you expect to connect to.
 -- If you uncommented POSTGRES_DB in docker-compose.yml, this CREATE DATABASE command might
 -- not be strictly necessary, but it's good practice to include it.
-CREATE DATABASE mydatabase OWNER puser;
+CREATE DATABASE akasaka_db OWNER puser;
+CREATE USER puser WITH PASSWORD '${AKASAKA_DB_PW}';
+ALTER ROLE puser SET client_encoding TO 'utf8';
+ALTER ROLE puser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE puser SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE akasaka_db TO puser;
 
 -- Connect to the newly created database
-\c mydatabase;
-
--- Create a simple table
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE
-);
-
--- Insert some sample data into the table
-INSERT INTO users (name, email) VALUES
-('Alice Smith', 'alice.smith@example.com'),
-('Bob Johnson', 'bob.johnson@example.com'),
-('Charlie Brown', 'charlie.brown@example.com');
-
--- You can add more SQL commands here to set up your database schema,
--- create other tables, add more data, set up roles, etc.
+\c akasaka_db;
 
