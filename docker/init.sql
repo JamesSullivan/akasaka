@@ -5,7 +5,7 @@
 -- The name 'mydatabase' should match what you expect to connect to.
 -- If you uncommented POSTGRES_DB in docker-compose.yml, this CREATE DATABASE command might
 -- not be strictly necessary, but it's good practice to include it.
-CREATE DATABASE akasaka_db OWNER puser;
+CREATE DATABASE fin_report OWNER puser;
 CREATE USER puser WITH PASSWORD '${AKASAKA_DB_PW}';
 ALTER ROLE puser SET client_encoding TO 'utf8';
 ALTER ROLE puser SET default_transaction_isolation TO 'read committed';

@@ -7,6 +7,7 @@
 uv run manage.py runserver
 uv add --dev pytest pytest-django
 uv run pytest
+uv lock --upgrade
 ```
 Installing dependencies in production
 
