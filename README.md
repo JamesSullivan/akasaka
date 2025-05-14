@@ -19,7 +19,9 @@ uv sync --no-dev --locked
 
 [uv django docker tutorial](https://github.com/fillumina/uv-django-tutorial/tree/main)
 
+[Plain Vanilla HTML, CSS, and JavaScript](https://plainvanillaweb.com/index.html)
 
+[Basecoat - A components library built with Tailwind CSS that works with any web stack.](https://basecoatui.com/)
 
 ## Try later
 
