@@ -7,6 +7,7 @@ This document explains how to use Docker Compose and a SQL initialization script
 1. Run the command `docker compose up -d`.  
    * docker compose up: This command reads the docker-compose.yml file, builds (if necessary) and starts the services defined in it.  
    * `-d`: This flag runs the containers in detached mode (in the background).  
+   * Note as this is a single container, once created it can also be started by `docker start docker-db-1`
 2. Docker will pull the postgres image (if you don't have it), create a network, a volume for persistent data, and start the PostgreSQL container. The init.sql script will run automatically on the first startup.  
 3. You should now be able to connect to your PostgreSQL database locally using a client (like psql, pgAdmin, DBeaver, etc.) with the following details:  
    * **Host:** localhost  
