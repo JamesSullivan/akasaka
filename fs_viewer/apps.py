@@ -2,9 +2,9 @@ from django.apps import AppConfig
 from .singleton import get_global_object
 import os
 
-class HomeConfig(AppConfig):
+class Fs_viewerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'home'
+    name = 'fs_viewer'
 
     def ready(self):
         # Instantiate the global object when the app is ready

@@ -6,10 +6,10 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 Examples:
 Function views
     1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+    2. Add a URL to urlpatterns:  path('', views.fs_viewer, name='fs_viewer')
 Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+    1. Add an import:  from other_app.views import fs_viewer
+    2. Add a URL to urlpatterns:  path('', fs_viewer.as_view(), name='fs_viewer')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from home import views as home_views
+from fs_viewer import views as fs_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('credits/', home_views.credits, name="credits"),
-    path('news/', home_views.news, name="news"),
+    path('credits/', fs_views.credits, name="credits"),
+    path('news/', fs_views.news, name="news"),
+    path('statements/', fs_views.statement_view, name='statement_view'),
 ]

@@ -17,7 +17,7 @@ services:
       # Set the PostgreSQL password
       POSTGRES_PASSWORD: ${AKASAKA_DB_PW}
       # Set the default database name (optional, init.sql can create it)
-      # POSTGRES_DB: mydatabase # You can uncomment this if you prefer Docker to create the initial DB
+      POSTGRES_DB: akasaka_db # You can uncomment this if you prefer Docker to create the initial DB
 
     # Define volumes for data persistence
     volumes:
