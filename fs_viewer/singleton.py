@@ -1,8 +1,9 @@
+from sec import query
 class GlobalObject:
     def __init__(self):
         # Initialize your object here
         print("GlobalObject is being instantiated!")
-        self.data = "This is global data"
+        self.query = query.Query()
 
 # This will hold the single instance of GlobalObject
 global_instance = None

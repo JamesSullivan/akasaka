@@ -6,7 +6,7 @@ from typing import Dict, List, Any
 from sqlalchemy import create_engine, text, select, and_
 from sqlalchemy.orm import Session, aliased
 
-from sec.models import Sub, Pre, Num
+from models import Sub, Pre, Num
 
 
 class Query:
@@ -66,14 +66,13 @@ class Query:
                     statement_query.c.version == Num.version,
                     Num.dimh == "0x00000000",
                     Num.iprx == 0,
-                    Num.qtrs == 1,
                 ),
                 isouter=True,  # This makes it a LEFT JOIN
             )
         )
 
         # Add the order by clause
-        query = query.order_by(statement_query.c.line, Num.ddate)
+        query = query.order_by(statement_query.c.line)
 
         # To execute the query and get results:
         with Session(self.engine) as session:
@@ -95,8 +94,9 @@ class Query:
 query = Query()
 target_cik = query.company_cik["MICROSOFT CORP"]
 print(f"{target_cik}")
-results = query.cik_adsh(target_cik)
+# results = query.cik_adsh(target_cik)
 # results = query.adsh_stmt("0000950170-23-014423", "IS")
+results = query.adsh_stmt("0001193125-16-662209", "IS")
 print(results)
 
 # %%

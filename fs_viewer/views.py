@@ -3,16 +3,13 @@ from django.http import HttpResponse
 from fs_viewer.singleton import get_global_object
 
 from .forms import StatementForm
-from sec.query import Query
 # Create your views here.
 
 
 def credits(request):
-    global_obj = get_global_object()
-    content1 = global_obj.data + "\n\n"
-    content2 = "Micky, the creator of this project, is a software engineer with a passion for web development and open-source contributions. He has a strong background in Python and Django, and he enjoys building scalable and efficient applications. Micky is also an advocate for clean code and best practices in software development."
+    content = "Micky, the creator of this project, is a software engineer with a passion for web development and open-source contributions. He has a strong background in Python and Django, and he enjoys building scalable and efficient applications. Micky is also an advocate for clean code and best practices in software development."
     # import IPython; IPython.embed()
-    return HttpResponse(content1 + content2, content_type="text/plain")
+    return HttpResponse(content, content_type="text/plain")
 
 def news(request):
     data = {
@@ -23,12 +20,24 @@ def news(request):
     }
     return render(request, "news2.html", data)
 
+def company_report_select(request):
+    # Instantiate the Query object
+    global_obj = get_global_object()
+    query = global_obj.query
+
+    # Get the company CIKs
+    company_cik = query.company_cik
+
+    # Render the selection template with the company CIKs
+    return render(request, "company_report_select.html", {"company_cik": company_cik})
+
 
 def statement_view(request):
     # Instantiate the Query object
     # In a real application, you might want to manage the lifecycle of this
     # object more carefully (e.g., single instance, caching).
-    query = Query()
+    global_obj = get_global_object()
+    query = global_obj.query
 
     # Populate company choices from the query object
     company_choices = [(cik, name) for name, cik in query.company_cik.items()]
